@@ -1,0 +1,17 @@
+    .home{
+       
+   
+        display: flex;
+        flex-direction: column;
+        row-gap: 0.5rem;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    .main-header{
+        /* color: red; */
+        transform: translate(-115%, 5%);
+        /* padding-right: 10rem; */
+    }

@@ -1,0 +1,3 @@
+## Installation
+
+- ``` npm init -y ```
