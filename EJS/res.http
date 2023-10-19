@@ -1,0 +1,16 @@
+###
+# POST http://localhost:6070/api/auth/login
+
+POST http://localhost:6070/api/auth/login
+
+Content-Type: application/json
+{
+  "username": "yultrish",
+  "email": "yultrish@gmail.com"
+}
+
+###
+GET http://localhost:2023/api/v1/allUsers
+
+###
+GET http://localhost:2023/api/v1/getMeals
