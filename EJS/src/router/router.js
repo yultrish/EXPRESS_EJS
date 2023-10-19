@@ -11,6 +11,13 @@ router.get('/Users', (req, res) => {
 });
 
 
+router.get('/v1/getMeals', async(req, res) => {
+    const meals = await knex('meals').select('*').orderBy('id', 'desc');
+    res.status(200).json({meal: meals});
+});
+
+
+
 
 
 

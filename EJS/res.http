@@ -10,7 +10,6 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:2023/api/v1/allUsers
 
 ###
-GET http://localhost:2023/api/v1/getMeals
+GET http://localhost:6070/api/auth/v1/getMeals
