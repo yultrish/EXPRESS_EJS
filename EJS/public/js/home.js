@@ -1,31 +1,215 @@
-let user = (new URLSearchParams(window.location.search)).get('username');
+window.addEventListener('load', async ()=> {
+    let user = new URLSearchParams(window.location.search).get('username');
 
-if (!user) {
-    window.location.href = '/login';
-}
+    if (!user) {
+        window.location.href = '/login';
+    }
+
+    // Function to render meals
+    const renderMeals = async () => {
+        try {
+            const response = await fetch('http://localhost:6070/api/auth/v1/getMeals');
+
+            if (response.ok) {
+                const data = await response.json();
+                const meals = data.meal;
+
+                const productList = document.querySelector('.row');
+
+                meals.forEach(meal => {
+                    const productItem = document.createElement('div');
+                    productItem.classList.add('col-4');
+                    productItem.innerHTML = `
+                    <div class="meal-list">
+                        <img src="${meal.image}" alt="${meal.name}" />
+                        <div class="text">
+                        <div class="name-price">
+                        <h4>${meal.name}</h4>
+                        <h4 class="price">$${meal.price}</h4>
+                        </div>
+                        <p>${meal.description}</p>
+                        <button class="add-to-order" id="${meal.id}">Order</button>
+
+                        
+                        </div>
+                        </div>
+                        
+                    `;
+
+                    productList.appendChild(productItem);
+                });
+
+                // Add event listeners to the "Add to Cart" buttons
+                const orderBtn = document.querySelectorAll('.add-to-order');
+
+                orderBtn.forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const mealId = e.target.id;
+                        addToOrder(mealId);
+                    });
+                });
+            } else {
+                console.error('Network error:', response.status);
+            }
+        } catch (error) {
+            console.error('An error occurred:', error);
+        }
+    };
+
+    // Function to add a meal to the cart
+    const addToOrder = async (mealId) => {
+        const searchParams = new URLSearchParams(window.location.search);
+        const username = searchParams.get('username');
+
+        try {
+            const response = await fetch('http://localhost:6070/api/auth/Order', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ meal_id: mealId, username: username })
+            });
+
+            if(response.status===409){
+                const data = await response.json();
+                console.log(data);
+                
+                alert(`${data.message}`)
+            }
+
+            if (response.ok) {
+                const data = await response.json();
+                console.log(data);
+                displayOrder();
+            }
+        } catch (error) {
+            console.error('An error occurred:', error);
+        }
+    };
+
+    // Function to show the user's order list
+    const displayOrder = async () => {
+        let orderList = document.querySelector('.order-container');
+        const searchParams = new URLSearchParams(window.location.search);
+        const username = searchParams.get('username');
+
+        try {
+            const result = await fetch(`http://localhost:6070/api/auth/allOrders/${username}`);
+
+            if (result.status === 200) {
+                const results = await result.json();
+                const { orders } = results;
+
+                 orderList.innerHTML = '';
+
+                orders.forEach(order => {
+                    orderList.innerHTML += `
+                        <div class="order-list">
+                            <h3>${order.name}</h3>
+                            <h3>1</h3>
+                            <h3 class="ItemPrices">$${order.price}</h3>
+                            <span class="material-symbols-outlined delete" id="${order.id}">delete</span>
+                        </div>
+                    `;
+                });
+
+                // orderList.innerHTML = outputHTML;
+                deleteOrder();
+                calculateTotalPrice();
+            }
+        } catch (error) {
+            console.error('An error occurred:', error);
+        }
+    };
+
+    // Function to delete an order
+    const deleteOrder = () => {
+        const deleteBtn = document.querySelectorAll('.delete');
+
+        deleteBtn.forEach(btn => {
+            btn.addEventListener('click', async (e) => {
+                e.preventDefault();
+                let id = e.target.id;
+                let confirmed = confirm(`Are you sure you want to delete order ${id}`);
+
+                if (confirmed === true) {
+                    try {
+                        const result = await fetch(`http://localhost:6070/api/auth/deleteOrder/${id}`, {
+                            method: 'DELETE'
+                        });
+
+                        if (result.status === 200) {
+                            const user = e.target.parentElement;
+                            user.classList.add('remove-fading');
+                            user.addEventListener('transitionend', () => {
+                                user.remove();
+                            });
+                            displayOrder()
+                            calculateTotalPrice();
+                            displayOrder();
+                        }
+                    } catch (error) {
+                        console.error('An error occurred:', error);
+                    }
+                }
+            });
+        });
+    };
 
 
-window.addEventListener('load', async () => {
-    const result = await fetch('http://localhost:6070/api/auth/v1/getMeals');
-    const response = await result.json();
-    console.log(response);
+    // Function to cancel all orders
+    const cancelAllOrders = async () => {
+        const searchParams = new URLSearchParams(window.location.search);
+        const username = searchParams.get('username');
 
-    const row = document.querySelector('.content');
+        try {
+            const response = await fetch(`http://localhost:6070/api/auth/deleteAllOrders`, {
+                method: 'DELETE'
+            });
 
-    let contents = '';
-    response.meal.forEach(meal => {
-        contents += `
-            <div class="col">
-                <div class="meal" id=${meal.id}>
-                    <img class="meal-image" src="${meal.image}">
-                    <div class="meal-info">
-                        <p class="meal-name">${meal.name}</p>
-                        <p class="meal-price">$${meal.price}</p>
-                        <p class="meal-description">${meal.description}</p>
-                    </div>
-                </div>
-            </div>
-        `;
-        row.innerHTML = contents;
+            if (response.status === 200) {
+                alert('All orders have been canceled.');
+                const items = document.querySelectorAll('.order-list');
+                items.forEach(item => {
+                    item.classList.add('remove-fading');
+                });
+                displayOrder();
+                location.reload()
+            }
+        } catch (error) {
+            console.error('An error occurred:', error);
+        }
+    };
+
+    // Add a click event listener to the "Cancel All Orders" button
+    const cancelButton = document.querySelector('.cancel');
+    cancelButton.addEventListener('click', () => {
+        const confirmed = confirm('Are you sure you want to cancel all orders?');
+        if (confirmed) {
+            cancelAllOrders();
+        }
+
+        
     });
-});
+
+
+    // Function to calculate the total price
+    const calculateTotalPrice = () => {
+        const total = document.querySelector('.total');
+        const itemPrices = document.querySelectorAll('.ItemPrices');
+
+        const prices = Array.from(itemPrices).map(price => {
+            const numericPart = price.textContent.replace('$', '');
+            return parseFloat(numericPart);
+        });
+
+        const totalPrice = prices.reduce((total, price) => total + price, 0).toFixed(2);
+        total.innerHTML = `Total: $${totalPrice}`;
+    };
+
+    // Initialize the page
+    renderMeals();
+    displayOrder();
+
+})

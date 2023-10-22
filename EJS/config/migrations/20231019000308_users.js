@@ -9,6 +9,7 @@ exports.up = function(knex) {
         table.increments('id').primary();
         table.string('email');
         table.string('username');
+        table.string('password');
         table.timestamps(true, true);
        
     });

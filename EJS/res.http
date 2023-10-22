@@ -11,5 +11,15 @@ Content-Type: application/json
 
 ###
 
+POST http://localhost:6070/api/auth/signup
+
+Content-Type: application/json
+{
+  "username": "yultris",
+  "email": "yultris@gmail.com",
+  "password": "yul123"
+  
+}
+
 ###
 GET http://localhost:6070/api/auth/v1/getMeals

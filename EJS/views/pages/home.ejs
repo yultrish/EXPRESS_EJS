@@ -1,5 +1,13 @@
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/home.css">
+<link rel="stylesheet" href="css/styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Parisienne&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+ <!-- Google Fonts -->
+ <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet"> -->
+
+
+l
 <div class="wrapper">
     <div class="sidebar">
     <%- include('../layouts/sidebar', {PageName: 'home'}) %>
@@ -8,25 +16,73 @@
         <header>
             <h1> <%- title %> </h1>
         </header>
-        <div class="info">
+        <!-- <div class="info">
             <div><h1> <%- user %>  </h1></div>
-        </div>
-    </div>
-    <div id="main-header" class="main-header">
-        Main Content
-      </div>
-
-
-      <div class="content">
-        <!-- <div class="row">
-           
         </div> -->
-       </div>
+    </div>
+
+    <div class="row">
+
+    </div>
+
+
+    <div class="order">
+      <div class="order-header">
+          <h3>Your Order</h3>
+      </div>
+      <div class="item-list">
+          <hr>
+          <div class="order-heading">
+              <h3 >Item</h3>
+              <h3>Qty</h3>
+              <h3>Price</h3>
+          </div>
+          <hr>
+          <div class="order-container">
+    
+    
+      </div>
+      <hr>
+          <div class="total">
+              <h3>Total</h3>
+              <h3 class="price"></h3>
+          </div>
+    
+          <hr>
+          <div class="cancel-order">
+              <button class="cancel">Cancel</button>
+              <button class="order-btn">Order</button>
+          </div>
+      </div>
+    </div>
+
+   
+
+  
+
+</div>
+
+
+
+
+    
+
 
 
 </div>
 <div>
     <!-- <%- include('../layouts/footer') %> -->
 </div>
+
+
+
+<!-- <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+<script src="assets/vendor/aos/aos.js"></script>
+<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="assets/vendor/typed.js/typed.umd.js"></script>
+<script src="assets/vendor/waypoints/noframework.waypoints.js"></script> -->
 
 <script src="js/home.js"></script>

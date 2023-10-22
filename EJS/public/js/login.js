@@ -7,13 +7,13 @@ const loginForm = document.querySelector('.submit');
       // Get form input values
       const username = document.querySelector('#login-username').value;
       const email = document.querySelector('#login-email').value;
-      // const password = document.querySelector('#login-password').value;
+      const password = document.querySelector('#login-password').value;
 
       // Create an object to hold the form data
       const formData = {
         username,
         email,
-        // password,
+        password,
       };
 
       // Make a POST request to the server
@@ -27,7 +27,7 @@ const loginForm = document.querySelector('.submit');
           body: JSON.stringify({
               username: username,
               email: email,
-              // password: password
+              password: password
           }),
         });
 
@@ -35,12 +35,57 @@ const loginForm = document.querySelector('.submit');
           const data = await response.json();
           console.log(data)
           alert('successfuly login'); 
-          window.location.href = '/home?username=yultrish';
+          window.location.href = `/home?username=${username}`;
         }
       } catch (error) {
         console.error('Network error:', error);
       }
-    });   
+    });  
+    
+    
+    const signupForm = document.querySelector('.btn-signup');
+
+    signupForm.addEventListener('click', async function (e) {
+      e.preventDefault(); // Prevent the default form submission
+      console.log('is clicked')
+
+      // Get form input values
+      const username = document.querySelector('#signup-username').value;
+      const email = document.querySelector('#signup-email').value;
+      const password = document.querySelector('#signup-password').value;
+
+      // Create an object to hold the form data
+      const formData = {
+        username,
+        email,
+        password,
+      };
+
+      // Make a POST request to the server
+      try {
+        const response = await fetch('http://localhost:6070/api/auth/signup', {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+              username: username,
+              email: email,
+              password: password
+          }),
+        });
+
+        if (response.status === 200) {
+          const data = await response.json();
+          console.log(data)
+          alert('successfuly login'); 
+          window.location.href = `/home?username=${username}`;
+        }
+      } catch (error) {
+        console.error('Network error:', error);
+      }
+    }); 
 
 
 

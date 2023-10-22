@@ -15,6 +15,7 @@ class User extends Model {
                 id: { type: 'integer' },
                 username: { type: 'string' },
                 email: { type: 'string' },
+                password: {type: 'string'},
                 created_at: { type: 'string' },
                 updated_at: { type: 'string' }
             }

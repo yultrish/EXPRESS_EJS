@@ -3,17 +3,37 @@
         <%= PageName %>
        </div> -->
    <!-- Use any element to open the sidenav -->
-<nav>
-    <label for="menu-toggle" class="menu-button">Menu</label>
-    <input type="checkbox" id="menu-toggle" name="menu" value="">
-    <div id="mySidenav" class="sidenav">
-      <label class="closebtn" for="menu-toggle">&times;</label>
-      <a href="#">Home</a>
-      <a href="#">Resources</a>
-      <a href="#">Guides</a>
-      <a href="#">Examples</a>
+<!-- ======= Mobile nav toggle button ======= -->
+<i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
+
+<!-- ======= Header ======= -->
+<header id="header">
+  <div class="d-flex flex-column">
+
+    <div class="profile">
+      <img src="uploads/main.jpeg" alt="" class="img-fluid rounded-circle">
+      <h1 class="text-light"><a href="index.html">Delish<br></a></h1>
+      <div class="social-links mt-3 text-center">
+        <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+        <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+        <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+        <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+        <a href="#" class="google-plus"><i class="bx bxl-tiktok"></i></a>
+        
+       
+      </div>
     </div>
-  </nav>
+
+    <nav id="navbar" class="nav-menu navbar">
+      <ul>
+        <li><a href="#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
+        <li><a href="#right" class="menu-link"><i class="bx bx-bowl-hot"></i> <span>Menu</span></a></li>
+       
+        <li><a href="#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
+      </ul>
+    </nav><!-- .nav-menu -->
+  </div>
+</header><!-- End Header -->
   
   <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
  
