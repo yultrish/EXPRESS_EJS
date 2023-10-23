@@ -8,6 +8,10 @@ router.post('/login', (res, req) => {
     User.getUser(res, req);
 });
 
+router.post('/signup', (res, req) => {
+    User.registerUser(res, req);
+});
+
 router.get('/Users', (req, res) => {
     User.Users(req, res);
 });

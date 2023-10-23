@@ -15,6 +15,7 @@ class Meal extends Model {
                 id: { type: 'integer' },
                 name: { type: 'string' },
                 price: { type: 'integer' },
+                image: { type: 'string' },
                 description: { type: 'string' },
                 is_vegetarian: { type: 'string' },
                 created_at: { type: 'boolean' },

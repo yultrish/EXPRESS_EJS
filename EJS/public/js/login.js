@@ -37,6 +37,11 @@ const loginForm = document.querySelector('.submit');
           alert('successfuly login'); 
           window.location.href = `/home?username=${username}`;
         }
+        if(response.status!==200){
+          const data = await response.json();
+          console.log(data)
+          alert(data.message); 
+        }
       } catch (error) {
         console.error('Network error:', error);
       }
@@ -81,6 +86,12 @@ const loginForm = document.querySelector('.submit');
           console.log(data)
           alert('successfuly login'); 
           window.location.href = `/home?username=${username}`;
+        }
+
+        if (response !== 200){
+          const data = await response.json();
+          console.log(data)
+          alert (data.message)
         }
       } catch (error) {
         console.error('Network error:', error);

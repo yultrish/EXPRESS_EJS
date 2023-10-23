@@ -7,14 +7,11 @@ const mealController = {
         try {
 
             let usr = req.query.username;
-            // if usr is not null or usr is not empty redirect to login page
-            // select ur from users where username = usr
-            // const user = await knex('users').select('*').where('username', usr);
 
             if (!usr) {
                 res.redirect('/login');
             } else {
-                let cuisine = ['Gluten Free', 'Ketogenic', 'Vegetarian', 'Pescetarian'];
+                let cuisine = ['Ghanaian', 'Continental', 'Asian', 'Nigerian'];
 
                 const orders = await knex('orders')
                 .select('orders.*', 'meals.name', 'meals.price')

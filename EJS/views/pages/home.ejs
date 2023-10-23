@@ -1,88 +1,107 @@
-<link rel="stylesheet" href="css/style.css">
+link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/home.css">
 <link rel="stylesheet" href="css/styles.css">
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Parisienne&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
- <!-- Google Fonts -->
- <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet"> -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 
-
-l
 <div class="wrapper">
     <div class="sidebar">
-    <%- include('../layouts/sidebar', {PageName: 'home'}) %>
+        <%- include('../layouts/sidebar', { PageName: 'home' }) %>
     </div>
     <div class="main_content">
         <header>
             <h1> <%- title %> </h1>
         </header>
-        <!-- <div class="info">
-            <div><h1> <%- user %>  </h1></div>
-        </div> -->
     </div>
 
-    <div class="row">
-
-    </div>
-
+    <div class="row"></div>
 
     <div class="order">
-      <div class="order-header">
-          <h3>Your Order</h3>
-      </div>
-      <div class="item-list">
-          <hr>
-          <div class="order-heading">
-              <h3 >Item</h3>
-              <h3>Qty</h3>
-              <h3>Price</h3>
-          </div>
-          <hr>
-          <div class="order-container">
-    
-    
-      </div>
-      <hr>
-          <div class="total">
-              <h3>Total</h3>
-              <h3 class="price"></h3>
-          </div>
-    
-          <hr>
-          <div class="cancel-order">
-              <button class="cancel">Cancel</button>
-              <button class="order-btn">Order</button>
-          </div>
-      </div>
+        <div class="order-header">
+            <h3>Your Order</h3>
+        </div>
+        <div class="item-list">
+            <hr>
+            <div class="order-heading">
+                <h3>Item</h3>
+                <h3>Qty</h3>
+                <h3>Price</h3>
+            </div>
+            <hr>
+            <div class="order-container"></div>
+            <hr>
+            <div class="total">
+                <h3>Total</h3>
+                <h3 class="price"></h3>
+            </div>
+            <hr>
+            <div class="cancel-order">
+                <button class="cancel">Cancel</button>
+                <button class="order-btn">Order</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- <main>
+    <h1>Add new product</h1>
+
+    <div class="date">
+        <label for="date" class=" hidden">date</label>
+        <input type="date" id="date">
     </div>
 
-   
+    <div class="container mt-4">
+        <form class="shadow-2xl rounded-2xl p-4" enctype="multipart/form-data">
 
-  
+            <div class="mb-3">
+                <div class="flex justify-between items-center mx-auto w-full p-2">
+                    <label for="mealName" class="mr-auto">Meal name</label>
+                    <div></div>
+                </div>
+                <input type="text" class="form-control" id="mealName">
+            </div>
+            <div class="mb-3">
+                <div class="flex justify-between items-center mx-auto w-full p-2">
+                    <label for="description" class="mr-auto">Description</label>
+                    <div></div>
+                </div>
+                <input type="text" class="form-control" id="description">
+            </div>
+            <div class="mb-3">
+                <div class="flex justify-between items-center mx-auto w-full p-2">
+                    <label for="price" class="mr-auto">Price</label>
+                    <div></div>
+                </div>
+                <input type="number" class="form-control" id="price">
+            </div>
+            <div class="mb-3">
+                <div class="flex justify-between items-center mx-auto w-full p-2">
+                    <label for="stock" class="mr-auto">Stock</label>
+                    <div></div>
 
-</div>
+                </div>
+                <input type="number" class="form-control" id="vegetarian">
+            </div>
+            <div class="input-group mb-3">
+                <div class="flex justify-between items-center mx-auto w-full p-2">
+                    <label for="image" class="mr-auto">Upload images</label>
+                    <div></div>
+                </div>
+                <input type="file" id="image">
+            </div>
+            <button type="button" class="addProduct btn btn-outline-success">Submit</button>
+        </form>
+
+    </div>
+
+</main> -->
 
 
 
-
-    
-
-
-
-</div>
 <div>
     <!-- <%- include('../layouts/footer') %> -->
 </div>
-
-
-
-<!-- <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-<script src="assets/vendor/aos/aos.js"></script>
-<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-<script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-<script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-<script src="assets/vendor/typed.js/typed.umd.js"></script>
-<script src="assets/vendor/waypoints/noframework.waypoints.js"></script> -->
 
 <script src="js/home.js"></script>

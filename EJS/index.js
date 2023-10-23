@@ -24,6 +24,7 @@ app.use(expressLayouts);
 app.set('layout', 'layouts/main');
 //global static files path
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/js', express.static(path.join(__dirname, 'public/js'), { 'Content-Type': 'application/javascript' }));
 app.use('/api/auth', authRouter); 
 app.use('/', route);
 

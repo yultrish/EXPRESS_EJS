@@ -47,7 +47,7 @@
       justify-content: space-around;
       /* background-color: aquamarine; */
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       padding-left: 20rem;
 
     }
@@ -125,7 +125,7 @@
     background: #040b14;
     color: white;
     overflow-y: auto;
-    transform: translate(25%, -10%);
+    /* transform: translate(25%, 0%); */
     height: 100vh;
   }
 
@@ -183,4 +183,45 @@
 .delete:hover{
   cursor: pointer;
   color: #0056b3;
+}
+
+
+main {
+  scrollbar-width: none;
+  padding: 4px;
+  height: 100%;
+  width: 100%;
+}
+
+
+main h1 {
+  padding-top: 1rem;
+}
+
+main .date {
+  display: inline-block;
+  background-color: var(--color-light);
+  border-radius: var(--border-radius-1);
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding: 0.5rem 1.6rem;
+}
+
+main .date input[type="date"] {
+  border: none;
+  background-color: transparent;
+  font-size: 1.2rem;
+  color: var(--color-dark);
+  font-weight: 600;
+  outline: none;
+}
+
+main .container {
+ width: 70%;
+ text-align: center;
+ margin: 0 auto;
+ padding: 1.3rem 2rem;
+ border-radius: 13px;
+ margin-top: 4rem;
+
 }

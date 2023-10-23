@@ -213,3 +213,49 @@ window.addEventListener('load', async ()=> {
     displayOrder();
 
 })
+
+
+// document.querySelector('.addProduct').addEventListener('click', async () => {
+//     const mealData = {
+//         date: document.querySelector('#date').value,
+//         mealName: document.querySelector('#mealName').value,
+//         description: document.querySelector('#description').value,
+//         price: document.querySelector('#price').value,
+//         // vegetarian: document.querySelector('#vegetarian').value, // Uncomment if needed
+//     };
+
+//     // Read the selected image file and convert it to a base64-encoded string
+//     const imageFile = document.querySelector('#image').files[0];
+//     if (imageFile) {
+//         const reader = new FileReader();
+//         reader.onload = function () {
+//             mealData.image = reader.result; // Set the image field as a base64-encoded string
+//             sendDataToServer(mealData);
+//         };
+//         reader.readAsDataURL(imageFile);
+//     } else {
+//         mealData.image = ''; // No image selected, set it as an empty string
+//         sendDataToServer(mealData);
+//     }
+// });
+
+// async function sendDataToServer(mealData) {
+//     try {
+//         const response = await fetch('http://localhost:6070/api/auth/v1/createMeal', {
+//             method: 'POST',
+//             headers: {
+//                 'Content-Type': 'application/json', // Set the content type to JSON
+//             },
+//             body: JSON.stringify(mealData), // Send mealData as JSON
+//         });
+
+//         if (response.ok) {
+//             const data = await response.json();
+//             console.log('Meal posted successfully:', data);
+//         } else {
+//             throw new Error('Failed to post meal.');
+//         }
+//     } catch (error) {
+//         console.error('Error:', error);
+//     }
+// }
